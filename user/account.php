@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require('../public/config/config.php');
 
 $data = new Database;
