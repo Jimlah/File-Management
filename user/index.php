@@ -44,13 +44,13 @@ $data = new Database;
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="home">Home</a>
+                    <a class="nav-link" href="index.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="uploads">My Uploads</a>
+                    <a class="nav-link" href="uploads.php">My Uploads</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="request">Request</a>
+                    <a class="nav-link" href="request.php">Request</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto nav-flex-icons">
