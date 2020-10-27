@@ -1,20 +1,19 @@
 <?php
+session_start();
 require('../public/config/config.php');
 
 $data = new Database;
 
-// if (strlen($_SESSION['id']) == 0) {
-//     header('location:../index.php');
-// } else {}
-
-?>
+if (strlen($_SESSION['id']) == 0) {
+    header('location:../index.php');
+} else {
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <?php
-require_once "includes/header.php";
-?>
+require_once "includes/header.php"; ?>
 
 
 <body>
@@ -25,11 +24,7 @@ require_once "includes/header.php";
 
 
 
-    require_once "includes/topbar.php";
-
-
-
-    ?>
+    require_once "includes/topbar.php"; ?>
 
 
 
@@ -43,41 +38,50 @@ require_once "includes/header.php";
                         Featured
                     </div>
                     <div class="card-body">
-                        <ul class="list-unstyled">
+                        <ul class="list-unstyled" id="lr">
 
                             <?php
                             $dt = $data->getAllFiles();
-                            $dt = json_decode($dt);
-                            foreach ($dt as $value) {
-                            ?>
+    $dt = json_decode($dt);
+    foreach ($dt as $value) {
+        ?>
 
-                                <li class="media shadow p-3 mb-5 bg-white rounded" style>
+                                <li class="media shadow p-3 mb-5 bg-white rounded" class='el' style>
                                     <img src="..." class="align-self-center mr-3" alt="...">
                                     <div class="media-body">
                                         <p><?php echo $value->name ?><strong><?php echo $value->date ?></strong></p>
-                                        <p>By: <?php echo $value->user_id . '   <em>' . $value->status ?></em> <img src="<?php echo ($value->status == 'private')? '../images/lock.svg' : '../images/unlock.svg' ?>" />
+                                        <p>By: <?php echo $value->user_id . '   <em>' . $value->status ?></em> <img src="<?php echo ($value->status == 'private') ? '../images/lock.svg' : '../images/unlock.svg' ?>" />
                                     </div>
-                                    <a href="#" class="align-self-center ml-3">
 
-                                        <img src="../images/download.svg" />
+                                    <?php
 
-                                    </a>
-                                    <a href="#" class="align-self-center ml-3">
+                                    if ($value->status == 'private') { ?>
+                                        <a href="#" class="align-self-center ml-3">
+                                            <img src="../images/paper-airplane.svg" />
+                                        </a><?php
+                                        } else {
+                                            ?>
+                                        <a href="../document/<?php echo $value->name ?>" class="align-self-center ml-3" download>
+                                            <img src="../images/download.svg" />
+                                        </a>
+                                    <?php
+                                        } ?>
 
-                                        <img src="../images/paper-airplane.svg" />
 
-                                    </a>
 
-                                    <a href="#" class="align-self-center ml-3">
 
-                                        <img src="../images/trashcan.svg" />
 
-                                    </a>
+                                    <!-- <a href="#" class="align-self-center ml-3">
+
+                                        <img src="../images/trash.svg" />
+
+                                    </a> -->
                                 </li>
                             <?php
-                            } ?>
+    } ?>
 
-                            
+
+
                         </ul>
                     </div>
 
@@ -113,8 +117,7 @@ require_once "includes/header.php";
     </div>
 
     <?php
-    require_once "includes/footer.php";
-    ?>
+    require_once "includes/footer.php"; ?>
 
     <script>
 
@@ -123,3 +126,6 @@ require_once "includes/header.php";
 </body>
 
 </html>
+
+<?php
+}?>
