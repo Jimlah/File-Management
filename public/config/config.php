@@ -162,5 +162,18 @@ class Database
         return $dt;
     }
 
+
+    public function sendRequest($name, $username, $email, $password)
+    {
+
+        $sql = 'INSERT INTO `user`(`name`, `username`, `email`, `password`) VALUES (:name, :username, :email, :password)';
+        $query = $this->dbh->prepare($sql);
+        $query->bindParam(':name', $name, PDO::PARAM_STR);
+        $query->bindParam(':username', $username, PDO::PARAM_STR);
+        $query->bindParam(':email', $email, PDO::PARAM_STR);
+        $query->bindParam(':password', $password, PDO::PARAM_STR);
+        $query->execute();
+    }
+
 }
 
