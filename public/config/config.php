@@ -153,12 +153,14 @@ class Database
 
 
 
-    public function getAllFile()
+    public function getAllFiles()
     {
-
         $sql = 'SELECT * FROM file';
         $query = $this->dbh->prepare($sql);
         $query->execute();
+        $result = $query->fetchALL(PDO::FETCH_OBJ);
+        $dt = json_encode($result);
+        return $dt;
     }
 
 }
