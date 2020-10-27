@@ -7,6 +7,18 @@ $data = new Database;
 if (strlen($_SESSION['id']) == 0) {
     header('location:../index.php');
 } else {
+
+    if (isset($_POST['request'])) {
+
+        $reason = $_POST['reason'];
+        $user_id = $_SESSION['id'];
+
+        $msg = $data->sendRequest($email, $username, $password);
+
+        echo $msg;
+
+        header('location:user/index.php');
+    }
 ?>
 
     <!DOCTYPE html>
@@ -56,7 +68,7 @@ if (strlen($_SESSION['id']) == 0) {
                                         <?php
 
                                         if ($value->status == 'private' & $_SESSION['id'] != $value->user_id) { ?>
-                                            <a href="#" class="align-self-center ml-3">
+                                            <a href="#" class="align-self-center ml-3" data-toggle="modal" data-target="#request">
                                                 <img src="../images/paper-airplane.svg" />
                                             </a><?php
                                             } else {
@@ -106,6 +118,40 @@ if (strlen($_SESSION['id']) == 0) {
                             </nav>
                         </div>
 
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="request" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Send Request</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+
+                                    <!-- Default form register -->
+                                    <form class=" modal-bodytext-center border border-light p-5" action="index.php" method="POST">
+
+                                        <p class="h4 mb-4">Request</p>
+
+                                        <div class="md-form">
+                                            <textarea id="form7" class="md-textarea form-control" rows="3"></textarea>
+                                            <label for="form7">State Your Reason</label>
+                                        </div>
+
+
+                                        <!-- Sign in button -->
+                                        <button class="btn btn-secondary btn-block my-4" type="submit" name='request'>Send</button>
+
+                                    </form>
+                                    <!-- Default form register -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
 
