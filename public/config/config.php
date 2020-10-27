@@ -111,14 +111,23 @@ class Database
     public function upload()
     {
         if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK) {
-            $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
+            
             $fileName = $_FILES['uploadedFile']['name'];
+            $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
+
+            
             $fileSize = $_FILES['uploadedFile']['size'];
             $fileType = $_FILES['uploadedFile']['type'];
             $fileNameCmps = explode(".", $fileName);
             $fileExtension = strtolower(end($fileNameCmps));
 
-            $target_dir = "../../images/";
+
+           
+
+            $rootDir = realpath($_SERVER["DOCUMENT_ROOT"]);
+            // echo var_dump($rootDir . "\File-Management\document");
+
+            $target_dir = $rootDir. "\Projects\File-Management\document\\";
             $target_file = $target_dir . basename($fileName);
             $uploadOk = 1;
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
