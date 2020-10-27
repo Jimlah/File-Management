@@ -70,7 +70,6 @@ class Database
             $result = $query->fetch(PDO::FETCH_OBJ);
 
             if ($result) {
-                session_start();
                 $_SESSION['id'] = $result->id;
                 $_SESSION['name'] = $result->name;
                 $_SESSION['username'] = $result->username;
