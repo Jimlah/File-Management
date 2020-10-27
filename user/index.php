@@ -24,7 +24,7 @@ require_once "includes/header.php";
     require_once "includes/navbar.php";
 
 
-    
+
     require_once "includes/topbar.php";
 
 
@@ -128,124 +128,7 @@ require_once "includes/header.php";
                 </div>
 
 
-                <!-- Modal -->
-                <div class="modal fade" id="sign" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-
-                            <!-- Default form login -->
-                            <form class="text-center border border-light p-5 modal-body" action="index.php" method="POST">
-
-                                <p class="h4 mb-4">Sign in</p>
-
-                                <!-- Email -->
-                                <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail" name="email">
-
-                                <!-- Password -->
-                                <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password" name="password">
-
-                                <div class="d-flex justify-content-around">
-                                    <div>
-                                        <!-- Remember me -->
-                                        <div class="custom-control custom-checkbox">
-                                            <input type="checkbox" class="custom-control-input" id="defaultLoginFormRemember">
-                                            <label class="custom-control-label" for="defaultLoginFormRemember">Remember
-                                                me</label>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <!-- Forgot password -->
-                                        <a href="">Forgot password?</a>
-                                    </div>
-                                </div>
-
-                                <!-- Sign in button -->
-                                <button class="btn btn-secondary btn-block my-4" type="submit" name='log_in'>Sign
-                                    in</button>
-
-                                <!-- Register -->
-                                <p>Not a member?
-                                    <a href="#" data-toggle="modal" data-target="#register" data-dismiss="modal">Register</a>
-                                </p>
-
-                            </form>
-                            <!-- Default form login -->
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <!-- Modal -->
-                <div class="modal fade" id="register" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-
-                            <!-- Default form register -->
-                            <form class=" modal-bodytext-center border border-light p-5" action="index.php" method="POST">
-
-                                <p class="h4 mb-4">Sign up</p>
-
-                                <div class="form-row mb-4">
-                                    <div class="col">
-                                        <!-- First name -->
-                                        <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" name="firstname">
-                                    </div>
-                                    <div class="col">
-                                        <!-- Last name -->
-                                        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name" name="lastname">
-                                    </div>
-                                </div>
-
-                                <!-- E-mail -->
-                                <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" name="email">
-
-                                <!-- Name -->
-                                <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Username" name="username">
-
-                                <!-- Password -->
-                                <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
-                                <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                                    At least 8 characters and 1 digit
-                                </small>
-
-                                <!-- Sign up button -->
-                                <button class="btn btn-secondary my-4 btn-block" type="submit" name="register">Register</button>
-
-                                <hr>
-
-                                <!-- Terms of service -->
-                                <p>By clicking
-                                    <em>Sign up</em> you agree to our
-                                    <a href="" target="_blank">terms of service</a>
-
-                            </form>
-                            <!-- Default form register -->
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
+               
 
             </div>
         </div>
