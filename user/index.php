@@ -3,8 +3,8 @@ require('../public/config/config.php');
 
 $data = new Database;
 
-// if (strlen($_SESSION['alogin']) == 0) {
-//     header('location:index.php');
+// if (strlen($_SESSION['id']) == 0) {
+//     header('location:../index.php');
 // } else {}
 
 ?>
