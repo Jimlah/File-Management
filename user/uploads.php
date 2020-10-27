@@ -7,6 +7,10 @@ $data = new Database;
 //     header('location:index.php');
 // } else {}
 
+if (isset($_POST['submit'])) {
+    
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -137,7 +141,9 @@ require_once "includes/header.php";
                 <form action="">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                            
+                                <button type="submit" name="submit"  class="input-group-text" id="inputGroupFileAddon01" >Upload</button>
+                            
                         </div>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="file">
