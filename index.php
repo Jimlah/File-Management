@@ -69,7 +69,7 @@ if (isset($_POST['log_in'])) {
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">Home</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto nav-flex-icons">
