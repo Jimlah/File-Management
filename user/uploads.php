@@ -10,13 +10,10 @@ $data = new Database;
 
 
 if (isset($_POST['submit'])) {
-
-
-    $dh = $data->upload();
-    echo $dh;
-
+    $status = $_POST['status'];
+    $user_id = 1;
+    echo $data->upload($status, $user_id);
 }
-
 
 ?>
 
@@ -154,9 +151,15 @@ require_once "includes/header.php";
                         </div>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="uploadedFile">
-                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            <label class="custom-file-label" for="inputGroupFile01" id="demo">Choose file</label>
                             <p id="demo"></p>
                         </div>
+                        <div class="input-group-append">
+                            <a href="#" class="align-self-center ml-3">
+                                <img src="../images/lock.svg" id="tog" />
+                            </a>
+                        </div>
+                        <input type="text" name="status" value="" hidden>
                     </div>
                 </form>
             </div>
@@ -166,6 +169,20 @@ require_once "includes/header.php";
                     $('input[type="file"]').change(function(e) {
                         var fileName = e.target.files[0].name;
                         $('#demo').text(fileName);
+                    });
+
+                    $('img').on({
+                        'click': function() {
+                            var src = ($(this).attr('src') === '../images/lock.svg') ?
+                                '../images/unlock.svg' :
+                                '../images/lock.svg';
+                            $(this).attr('src', src);
+
+                            var vl = ($(this).attr('src') === '../images/lock.svg') ?
+                                'private' :
+                                'public';
+                            $('input[name="status"]').val(vl);
+                        }
                     });
                 });
             </script>

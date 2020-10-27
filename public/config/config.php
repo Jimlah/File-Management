@@ -108,21 +108,17 @@ class Database
         header("location:index.php"); 
     }
 
-    public function upload()
+    public function upload($status, $user_id)
     {
         if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK) {
             
             $fileName = $_FILES['uploadedFile']['name'];
             $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
-
-            
             $fileSize = $_FILES['uploadedFile']['size'];
             $fileType = $_FILES['uploadedFile']['type'];
             $fileNameCmps = explode(".", $fileName);
             $fileExtension = strtolower(end($fileNameCmps));
-
-
-           
+ 
 
             $rootDir = realpath($_SERVER["DOCUMENT_ROOT"]);
             // echo var_dump($rootDir . "\File-Management\document");
@@ -133,43 +129,36 @@ class Database
             $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
             if (move_uploaded_file($fileTmpPath, $target_file)) {
-                return "The file " . htmlspecialchars(basename($fileTmpPath)) . " has been uploaded.";
+                
+                $name = $fileName;
+                $user_id = $user_id;
+                $status = $status;
+
+                $sql = 'INSERT INTO `file`(`user_id`, `name`, `status`) VALUES (:user_id, :name, :status)';
+                $query = $this->dbh->prepare($sql);
+                $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+                $query->bindParam(':name', $name, PDO::PARAM_STR);
+                $query->bindParam(':status', $status, PDO::PARAM_STR);
+                $query->execute();
+                return "The file " . htmlspecialchars(basename($fileTmpPath)) . $status . $user_id . " has been uploaded.";
+                
             } else {
                 return "Sorry, there was an error uploading your file.";
             }
            
         }
-        
-
-
-
-        // Check if file already exists
-        
 
         
-
-        
-
-        // Check if $uploadOk is set to 0 by an error
-        // if ($uploadOk == 0) {
-        //     echo "Sorry, your file was not uploaded.";
-        //     // if everything is ok, try to upload file
-        // } else {
-        //     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        //         echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
-        //     } else {
-        //         echo "Sorry, there was an error uploading your file.";
-        //     }
-        // }
+    }
 
 
-        // $sql = 'INSERT INTO `user`(`name`, `username`, `email`, `password`) VALUES (:name, :username, :email, :password)';
-        // $query = $this->dbh->prepare($sql);
-        // $query->bindParam(':name', $name, PDO::PARAM_STR);
-        // $query->bindParam(':username', $username, PDO::PARAM_STR);
-        // $query->bindParam(':email', $email, PDO::PARAM_STR);
-        // $query->bindParam(':password', $password, PDO::PARAM_STR);
-        // $query->execute();
+
+    public function getAllFile()
+    {
+
+        $sql = 'SELECT * FROM file';
+        $query = $this->dbh->prepare($sql);
+        $query->execute();
     }
 
 }
