@@ -7,8 +7,14 @@ $data = new Database;
 //     header('location:index.php');
 // } else {}
 
+
+
 if (isset($_POST['submit'])) {
-    
+
+
+    $dh = $data->upload();
+    echo $dh;
+
 }
 
 ?>
@@ -138,16 +144,17 @@ require_once "includes/header.php";
 
             <div class="col-sm-4 ">
 
-                <form action="">
+                <form action="uploads.php" method="POST" enctype="multipart/form-data">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            
-                                <button type="submit" name="submit"  class="input-group-text" id="inputGroupFileAddon01" >Upload</button>
-                            
+
+                            <button type="submit" name="submit" class="input-group-text" id="inputGroupFileAddon01">Upload</button>
+
                         </div>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="file">
-                            <label class="custom-file-label" for="inputGroupFile01" id="demo">Choose file</label>
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01" name="uploadedFile">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                            <p id="demo"></p>
                         </div>
                     </div>
                 </form>
