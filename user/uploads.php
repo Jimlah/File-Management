@@ -12,7 +12,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
     if (isset($_POST['submit'])) {
         $status = $_POST['status'];
-        $user_id = 1;
+        $user_id = $_SESSION['id'];
         echo $data->upload($status, $user_id);
     }
 
