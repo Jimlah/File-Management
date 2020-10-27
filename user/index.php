@@ -1,40 +1,12 @@
 <?php
-require('public/config/config.php');
+require('../public/config/config.php');
 
 $data = new Database;
 
-if (isset($_POST['register'])) {
+// if (strlen($_SESSION['alogin']) == 0) {
+//     header('location:index.php');
+// } else {}
 
-    $name = $_POST['firstname'] . ' ' .  $_POST['lastname'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $username = $_POST['username'];
-
-    if ($data->checkMail($email, $username) == 'present') {
-        $data->registerUser($name, $username, $email, $password);
-        $msg = 'Successfully Registered';
-
-
-        echo '<script type="text/javascript">';
-        echo ' alert("working")';  //not showing an alert box.
-        echo '</script>';
-    } else {
-        echo $data->checkMail($email, $username);
-    }
-}
-
-if (isset($_POST['log_in'])) {
-
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $username = $_POST['email'];
-
-    $msg = $data->sign_in($email, $username, $password);
-
-    echo $msg;
-
-    header('location:user/index.php');
-}
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +88,16 @@ if (isset($_POST['log_in'])) {
                                                 <path fill-rule="evenodd" d="M7.5 7.25C7.5 4.58 9.422 2.5 12 2.5c2.079 0 3.71 1.34 4.282 3.242a.75.75 0 101.436-.432C16.971 2.825 14.792 1 12 1 8.503 1 6 3.845 6 7.25V9h-.5A2.5 2.5 0 003 11.5v8A2.5 2.5 0 005.5 22h13a2.5 2.5 0 002.5-2.5v-8A2.5 2.5 0 0018.5 9h-11V7.25zm-3 4.25a1 1 0 011-1h13a1 1 0 011 1v8a1 1 0 01-1 1h-13a1 1 0 01-1-1v-8z">
                                                 </path>
                                             </svg></span></p>
-                                </div> <a href="#" class="align-self-center ml-3">
+                                </div>
+                                <a href="#" class="align-self-center ml-3">
+
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                        <path d="M4.97 11.03a.75.75 0 111.06-1.06L11 14.94V2.75a.75.75 0 011.5 0v12.19l4.97-4.97a.75.75 0 111.06 1.06l-6.25 6.25a.75.75 0 01-1.06 0l-6.25-6.25zm-.22 9.47a.75.75 0 000 1.5h14.5a.75.75 0 000-1.5H4.75z">
+                                        </path>
+                                    </svg>
+
+                                </a>
+                                <a href="#" class="align-self-center ml-3">
 
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                                         <path d="M4.97 11.03a.75.75 0 111.06-1.06L11 14.94V2.75a.75.75 0 011.5 0v12.19l4.97-4.97a.75.75 0 111.06 1.06l-6.25 6.25a.75.75 0 01-1.06 0l-6.25-6.25zm-.22 9.47a.75.75 0 000 1.5h14.5a.75.75 0 000-1.5H4.75z">
@@ -243,47 +224,47 @@ if (isset($_POST['log_in'])) {
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            
-                                <!-- Default form register -->
-                                <form class=" modal-bodytext-center border border-light p-5" action="index.php" method="POST">
 
-                                    <p class="h4 mb-4">Sign up</p>
+                            <!-- Default form register -->
+                            <form class=" modal-bodytext-center border border-light p-5" action="index.php" method="POST">
 
-                                    <div class="form-row mb-4">
-                                        <div class="col">
-                                            <!-- First name -->
-                                            <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" name="firstname">
-                                        </div>
-                                        <div class="col">
-                                            <!-- Last name -->
-                                            <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name" name="lastname">
-                                        </div>
+                                <p class="h4 mb-4">Sign up</p>
+
+                                <div class="form-row mb-4">
+                                    <div class="col">
+                                        <!-- First name -->
+                                        <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" name="firstname">
                                     </div>
+                                    <div class="col">
+                                        <!-- Last name -->
+                                        <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="Last name" name="lastname">
+                                    </div>
+                                </div>
 
-                                    <!-- E-mail -->
-                                    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" name="email">
+                                <!-- E-mail -->
+                                <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail" name="email">
 
-                                    <!-- Name -->
-                                    <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Username" name="username">
+                                <!-- Name -->
+                                <input type="text" id="defaultSubscriptionFormPassword" class="form-control mb-4" placeholder="Username" name="username">
 
-                                    <!-- Password -->
-                                    <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
-                                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                                        At least 8 characters and 1 digit
-                                    </small>
+                                <!-- Password -->
+                                <input type="password" id="defaultRegisterFormPassword" class="form-control" placeholder="Password" name="password" aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                                <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                                    At least 8 characters and 1 digit
+                                </small>
 
-                                    <!-- Sign up button -->
-                                    <button class="btn btn-secondary my-4 btn-block" type="submit" name="register">Register</button>
+                                <!-- Sign up button -->
+                                <button class="btn btn-secondary my-4 btn-block" type="submit" name="register">Register</button>
 
-                                    <hr>
+                                <hr>
 
-                                    <!-- Terms of service -->
-                                    <p>By clicking
-                                        <em>Sign up</em> you agree to our
-                                        <a href="" target="_blank">terms of service</a>
+                                <!-- Terms of service -->
+                                <p>By clicking
+                                    <em>Sign up</em> you agree to our
+                                    <a href="" target="_blank">terms of service</a>
 
-                                </form>
-                                <!-- Default form register -->
+                            </form>
+                            <!-- Default form register -->
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             </div>

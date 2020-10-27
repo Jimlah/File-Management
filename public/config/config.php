@@ -34,9 +34,9 @@ class Database
             $query->fetchAll(PDO::FETCH_OBJ);
 
             if ($query->rowCount() != 0) {
-                die('Username or Email Already Exist');
+                return 'Username or Email Already Exist';
             } else {
-                return true;
+                return 'present';
             }
         } catch (PDOException $e) {
             exit("Error: " . $e->getMessage());
@@ -45,18 +45,20 @@ class Database
 
     public function registerUser($name, $username, $email, $password)
     {
+        $password = md5($password);
 
         $sql = 'INSERT INTO `user`(`name`, `username`, `email`, `password`) VALUES (:name, :username, :email, :password)';
         $query = $this->dbh->prepare($sql);
         $query->bindParam(':name', $name, PDO::PARAM_STR);
         $query->bindParam(':username', $username, PDO::PARAM_STR);
         $query->bindParam(':email', $email, PDO::PARAM_STR);
-        $query->bindParam(':password', md5($password), PDO::PARAM_STR);
+        $query->bindParam(':password', $password, PDO::PARAM_STR);
         $query->execute();
     }
 
     public function sign_in($email, $username, $password)
     {
+        $password = md5($password);
 
         try {
             $sql = 'SELECT * FROM `user` WHERE (username = :username OR email=:email) AND password = :password';
@@ -107,5 +109,3 @@ class Database
     }
 }
 
-$data = new Database;
-echo var_dump($data->sign_in('abdullahij951@gmail.com', "", '123456'));
