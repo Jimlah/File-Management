@@ -239,7 +239,7 @@ class Database
             $query->bindParam(':sent_id', $user_id, PDO::PARAM_STR);
             $query->execute();
             $result = $query->fetchALL(PDO::FETCH_OBJ);
-            $result = json_encode($result);
+            // $result = json_encode($result);
             return $result;
         } catch (PDOException $e) {
             exit('Error :' . $e->getMessage());
