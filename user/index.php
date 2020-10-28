@@ -102,7 +102,7 @@ if (strlen($_SESSION['id']) == 0) {
                                                     </button>
                                                 </div>
 
-                                                <!-- Default form register -->
+                                                <!-- Default form request -->
                                                 <form class=" modal-bodytext-center border border-light p-5" action="index.php" method="POST">
 
                                                     <p class="h4 mb-4">Request</p>
