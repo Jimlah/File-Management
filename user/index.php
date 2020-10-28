@@ -13,13 +13,13 @@ if (strlen($_SESSION['id']) == 0) {
         $reason = $_POST['reason'];
         $sent_id = $_POST['sent_id'];
         $file_id = $_POST['file_id'];
-        $receive = $_POST['receive_id'];
+        $recieve_id = $_POST['receive_id'];
 
         $msg = $data->sendRequest($recieve_id, $sent_id, $file_id, $reason);
 
         echo $msg;
 
-        header('location:user/index.php');
+        header('location:index.php');
     }
 ?>
 
