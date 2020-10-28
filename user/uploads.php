@@ -4,8 +4,8 @@ require('../public/config/config.php');
 
 $data = new Database;
 
-if (strlen($_SESSION['alogin']) == 0) {
-    header('location:index.php');
+if (strlen($_SESSION['id']) == 0) {
+    header('location:../index.php');
 } else {
 
 
@@ -50,7 +50,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 
                 <div class="card">
                     <div class="card-header">
-                        Featured
+                        My Uploads
                     </div>
                     <div class="card-body">
                         <ul class="list-unstyled">
@@ -59,13 +59,14 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 $dt = $data->getAllFiles();
                                 $dt = json_decode($dt);
                                 foreach ($dt as $value) {
-                                ?>
+                                    if ($_SESSION['id'] == $value->id) {
+                                        ?>
 
                             <li class="media shadow p-3 mb-5 bg-white rounded" class='el' style>
                                 <img src="..." class="align-self-center mr-3" alt="...">
                                 <div class="media-body">
                                     <p><?php echo $value->name ?><strong><?php echo $value->date ?></strong></p>
-                                    <p>By: <?php echo $value->user_id . '   <em>' . $value->status ?></em> <img
+                                    <p>By: <?php echo $data->getSingleUser($value->user_id)->name . '   <em>' . $value->status ?></em> <img
                                             src="<?php echo ($value->status == 'private') ? '../images/lock.svg' : '../images/unlock.svg' ?>" />
                                 </div>
 
@@ -85,7 +86,7 @@ if (strlen($_SESSION['alogin']) == 0) {
                                 </a>
                             </li>
                             <?php
-                                } ?>
+                                    } } ?>
 
 
 
