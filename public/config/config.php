@@ -163,15 +163,15 @@ class Database
     }
 
 
-    public function sendRequest($name, $username, $email, $password)
+    public function sendRequest($recieve_id, $sent_id, $file_id, $reason)
     {
 
-        $sql = 'INSERT INTO `user`(`name`, `username`, `email`, `password`) VALUES (:name, :username, :email, :password)';
+        $sql = 'INSERT INTO `request`( `receive_id`, `file_id`, `sent_id`, `reason`) VALUES (:receive_id, :file_id, :sent_id, :reason)';
         $query = $this->dbh->prepare($sql);
-        $query->bindParam(':name', $name, PDO::PARAM_STR);
-        $query->bindParam(':username', $username, PDO::PARAM_STR);
-        $query->bindParam(':email', $email, PDO::PARAM_STR);
-        $query->bindParam(':password', $password, PDO::PARAM_STR);
+        $query->bindParam(':receive_id', $recieve_id, PDO::PARAM_STR);
+        $query->bindParam(':file_id', $file_id, PDO::PARAM_STR);
+        $query->bindParam(':sent_id', $sent_id, PDO::PARAM_STR);
+        $query->bindParam(':reason', $reason, PDO::PARAM_STR);
         $query->execute();
     }
 
