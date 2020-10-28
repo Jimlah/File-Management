@@ -71,7 +71,7 @@ if (strlen($_SESSION['id']) == 0) {
                                             src="<?php echo ($value->status == 'private') ? '../images/lock.svg' : '../images/unlock.svg' ?>" />
                                 </div>
 
-                                
+
                                 <a href="../document/<?php echo $value->name ?>" class="align-self-center ml-3"
                                     download>
                                     <img src="../images/download.svg" />
@@ -126,7 +126,7 @@ if (strlen($_SESSION['id']) == 0) {
                         <div class="input-group-prepend">
 
                             <button type="submit" name="submit" class="input-group-text"
-                                id="inputGroupFileAddon01">Upload</button>
+                                id="inputGroupFileAddon01" >Upload</button>
 
                         </div>
                         <div class="custom-file">
@@ -140,7 +140,7 @@ if (strlen($_SESSION['id']) == 0) {
                                 <img src="../images/lock.svg" id="tog" />
                             </a>
                         </div>
-                        <input type="text" name="status" value="" hidden>
+                        <input type="text" name="status" value="private" hidden>
                     </div>
                 </form>
             </div>
