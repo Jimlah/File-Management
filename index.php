@@ -123,7 +123,7 @@ if (isset($_POST['log_in'])) {
                                     <img src="..." class="align-self-center mr-3" alt="...">
                                     <div class="media-body">
                                         <p><?php echo $value->name ?><strong><?php echo $value->date ?></strong></p>
-                                        <p>By: <?php echo $value->user_id . '   <em>' . $value->status ?></em> <img src="<?php echo ($value->status == 'private') ? 'images/lock.svg' : 'images/unlock.svg' ?>" />
+                                        <p>By: <?php echo $data->getSingleUser($value->user_id)->name . '   <em>' . $value->status ?></em> <img src="<?php echo ($value->status == 'private') ? 'images/lock.svg' : 'images/unlock.svg' ?>" />
                                     </div>
 
                                     <?php
