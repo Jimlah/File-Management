@@ -96,6 +96,35 @@ class Database
         }
     }
 
+    // To get a Single User
+    public function getSingleUser($id)
+    {
+        try {
+            $sql = 'SELECT * FROM `user` WHERE id = :id';
+            $query = $this->dbh->prepare($sql);
+            $query->bindParam(':id', $id, PDO::PARAM_STR);
+            $query->execute();
+            $result = $query->fetch(PDO::FETCH_OBJ);
+            return $result;
+        } catch (PDOException $e) {
+            exit('Error :' . $e->getMessage());
+        }
+    }
+
+    public function getSingleFile($id)
+    {
+        try {
+            $sql = 'SELECT * FROM `file` WHERE id = :id';
+            $query = $this->dbh->prepare($sql);
+            $query->bindParam(':id', $id, PDO::PARAM_STR);
+            $query->execute();
+            $result = $query->fetch(PDO::FETCH_OBJ);
+            return $result;
+        } catch (PDOException $e) {
+            exit('Error :' . $e->getMessage());
+        }
+    }
+
 
     // To log out a user
     public function log_out()
