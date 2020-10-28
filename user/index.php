@@ -11,9 +11,11 @@ if (strlen($_SESSION['id']) == 0) {
     if (isset($_POST['request'])) {
 
         $reason = $_POST['reason'];
-        $user_id = $_SESSION['id'];
+        $sent_id = $_POST['sent_id'];
+        $file_id = $_POST['file_id'];
+        $receive = $_POST['receive_id'];
 
-        $msg = $data->sendRequest($email, $username, $password);
+        $msg = $data->sendRequest($recieve_id, $sent_id, $file_id, $reason);
 
         echo $msg;
 
@@ -89,6 +91,45 @@ if (strlen($_SESSION['id']) == 0) {
 
                                     </a> -->
                                     </li>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="request" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">Send Request</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+
+                                                <!-- Default form register -->
+                                                <form class=" modal-bodytext-center border border-light p-5" action="index.php" method="POST">
+
+                                                    <p class="h4 mb-4">Request</p>
+
+                                                    <div class="md-form">
+                                                        <textarea id="form7" class="md-textarea form-control" name='reason' rows="3"></textarea>
+                                                        <label for="form7">State Your Reason</label>
+                                                    </div>
+
+                                                    <input type="text" name="sent_id" value="<?= $_SESSION['id'] ?>" hidden>
+                                                    <input type="text" name="receive_id" value="<?= $value->user_id  ?>" hidden>
+                                                    <input type="text" name="file_id" value="<?= $value->id ?>" hidden>
+                                                    
+
+
+                                                    <!-- Sign in button -->
+                                                    <button class="btn btn-secondary btn-block my-4" type="submit" name='request'>Send</button>
+
+                                                </form>
+                                                <!-- Default form register -->
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 <?php
                                 } ?>
 
@@ -119,39 +160,7 @@ if (strlen($_SESSION['id']) == 0) {
                         </div>
 
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="request" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Send Request</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
 
-                                    <!-- Default form register -->
-                                    <form class=" modal-bodytext-center border border-light p-5" action="index.php" method="POST">
-
-                                        <p class="h4 mb-4">Request</p>
-
-                                        <div class="md-form">
-                                            <textarea id="form7" class="md-textarea form-control" rows="3"></textarea>
-                                            <label for="form7">State Your Reason</label>
-                                        </div>
-
-
-                                        <!-- Sign in button -->
-                                        <button class="btn btn-secondary btn-block my-4" type="submit" name='request'>Send</button>
-
-                                    </form>
-                                    <!-- Default form register -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
 
