@@ -64,7 +64,7 @@ if (strlen($_SESSION['id']) == 0) {
                                         ?>
 
                             <li class="media shadow p-3 mb-5 bg-white rounded" class='el' style>
-                                <img src="..." class="align-self-center mr-3" alt="...">
+                                <img src="../images/database.svg" class="align-self-center mr-3" alt="...">
                                 <div class="media-body">
                                     <p><?php echo $value->name ?><strong><?php echo $value->date ?></strong></p>
                                     <p>By: <?php echo $data->getSingleUser($value->user_id)->name . '   <em>' . $value->status ?></em> <img
