@@ -201,7 +201,7 @@ class Database
     public function getAllFiles()
     {
         try {
-            $sql = 'SELECT * FROM file';
+            $sql = 'SELECT * FROM file ORDER BY id DESC';
             $query = $this->dbh->prepare($sql);
             $query->execute();
             $result = $query->fetchALL(PDO::FETCH_OBJ);
@@ -233,7 +233,7 @@ class Database
     public function getRequest($user_id)
     {
         try {
-            $sql = 'SELECT * FROM `request` WHERE receive_id = :receive_id OR sent_id = :sent_id';
+            $sql = 'SELECT * FROM `request` WHERE receive_id = :receive_id OR sent_id = :sent_id ORDER BY id DESC';
             $query = $this->dbh->prepare($sql);
             $query->bindParam(':receive_id', $user_id, PDO::PARAM_STR);
             $query->bindParam(':sent_id', $user_id, PDO::PARAM_STR);
@@ -245,6 +245,9 @@ class Database
             exit('Error :' . $e->getMessage());
         }
     }
+
+
+    // To send reques Replies
 
     public function sendReply($id, $reply)
     {
@@ -259,6 +262,10 @@ class Database
         }
     }
 
+
+
+    // TO make changes to the Profile
+
     public function editProfile($id, $column, $input)
     {
         try {
@@ -272,6 +279,8 @@ class Database
         }
     }
 
+
+    // To delete any Input
     public function delete($id, $table)
     {
         try {
@@ -284,7 +293,7 @@ class Database
         }
     }
 
-
+// To Logout From The account
     public function logOut()
     {
         try {
