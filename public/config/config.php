@@ -259,6 +259,19 @@ class Database
         }
     }
 
+    public function editProfile($id, $column, $input)
+    {
+        try {
+            $sql = 'UPDATE `user` SET '.$column.' = :input WHERE id = :id';
+            $query = $this->dbh->prepare($sql);
+            $query->bindParam(':input', $input, PDO::PARAM_STR);
+            $query->bindParam(':id', $id, PDO::PARAM_STR);
+            $query->execute();
+        } catch (PDOException $e) {
+            exit('Error :' . $e->getMessage());
+        }
+    }
+
 
     public function logOut()
     {

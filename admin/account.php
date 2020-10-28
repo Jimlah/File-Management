@@ -86,13 +86,13 @@ if (strlen($_SESSION['id']) == 0) {
                                 <figure>
                                     <img src="http://www.localcrimenews.com/wp-content/uploads/2013/07/default-user-icon-profile.png" alt="" class="img-circle" style="width:75px;" id="user-img">
                                 </figure>
-                                <h5 style="text-align:center;"><strong id="user-name"><?= $data->getSingleUser($_SESSION['id'])->name ?></strong> <a href="" id="name" class="align-self-center ml-3" data-toggle="modal" data-target="#edit"><img src="../images/pencil.svg" alt=""></a></h5>
-                                <p style="text-align:center;font-size: smaller;" id="user-frid"><?= $data->getSingleUser($_SESSION['id'])->username ?> <a href="" id="username" class="align-self-center ml-3" data-toggle="modal" data-target="#edit"><img src="../images/pencil.svg" alt=""></a></p>
-                                <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="user-email"><?= $data->getSingleUser($_SESSION['id'])->email ?> <a href="" id='email' class="align-self-center ml-3" data-toggle="modal" data-target="#edit"><img src="../images/pencil.svg" alt=""></a></p>
+                                <h5 style="text-align:center;"><strong id="user-name"><?= $data->getSingleUser($_SESSION['id'])->name ?></strong></h5>
+                                <p style="text-align:center;font-size: smaller;" id="user-frid"><?= $data->getSingleUser($_SESSION['id'])->username ?> </p>
+                                <p style="text-align:center;font-size: smaller;overflow-wrap: break-word;" id="user-email"><?= $data->getSingleUser($_SESSION['id'])->email ?> </p>
                                 <p style="text-align:center;font-size: smaller;"><strong>A/C status: </strong><span class="tags" id="user-status">Active</span></p>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
                                 <p style="text-align:center;font-size: smaller;"><strong>Password</strong></p>
-                                <p style="text-align:center;font-size: smaller;" id="user-role">******************<a href="" id="password" class="align-self-center ml-3" data-toggle="modal" data-target="#edit"><img src="../images/pencil.svg" alt=""></a></p>
+                                <p style="text-align:center;font-size: smaller;" id="user-role">******************</p>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 divider text-center"></div>
                                 <div class="row">
                                     <div class="col-lg-6" style="text-align:center;overflow-wrap: break-word;">
@@ -113,58 +113,6 @@ if (strlen($_SESSION['id']) == 0) {
                             </div>
                         </div>
                     </div>
-
-
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="edit" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="staticBackdropLabel">Send Request</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-
-                                <!-- Default form request -->
-                                <form class=" modal-bodytext-center border border-light p-5" action="index.php" method="POST">
-
-                                    <p class="h4 mb-4">Edit</p>
-
-                                    <div class="md-form">
-                                        <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" name="input" value="">
-                                    </div>
-
-                                    <input type="text" name="column" value="" hidden>
-
-
-
-                                    <!-- Sign in button -->
-                                    <button class="btn btn-secondary btn-block my-4" type="submit" name='request'>Send</button>
-
-                                </form>
-                                <!-- Default form register -->
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <script>
-                        // $('#name').on({
-                        //     'click': function() {
-                        //         $('input[name="column"]').val('name');
-                        //         $('input[name="input"]').val(<?= $data->getSingleUser($_SESSION['id'])->name ?>);
-                        //     }
-                        // });
-
-                        $('#name').click(function(){
-                            $('input[name="column"]').val('#name'); 
-                            $('input[name="input"]').val(<?= $data->getSingleUser($_SESSION['id'])->name ?>);
-                        });
-                    </script>
 
                 </div>
             </div>
