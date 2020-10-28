@@ -14,6 +14,7 @@ if (strlen($_SESSION['id']) == 0) {
         $status = $_POST['status'];
         $user_id = $_SESSION['id'];
         echo $data->upload($status, $user_id);
+        header('location:uploads.php');
     }
 
 ?>
@@ -59,7 +60,7 @@ if (strlen($_SESSION['id']) == 0) {
                                 $dt = $data->getAllFiles();
                                 $dt = json_decode($dt);
                                 foreach ($dt as $value) {
-                                    if ($_SESSION['id'] == $value->id) {
+                                    if ($_SESSION['id'] == $value->user_id) {
                                         ?>
 
                             <li class="media shadow p-3 mb-5 bg-white rounded" class='el' style>
