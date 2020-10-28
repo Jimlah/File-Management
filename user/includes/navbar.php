@@ -24,8 +24,8 @@
                     </svg>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#sign" href="account.php">My Account</a>
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#register" href="logout.php">Sign Out</a>
+                    <a class="dropdown-item" href="account.php">My Account</a>
+                    <a class="dropdown-item" href="logout.php">Sign Out</a>
                 </div>
 
             </li>

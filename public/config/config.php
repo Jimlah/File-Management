@@ -46,7 +46,7 @@ class Database
     }
 
 
-// TO register a new user
+    // TO register a new user
     public function registerUser($name, $username, $email, $password)
     {
         try {
@@ -66,7 +66,7 @@ class Database
 
 
 
-// to Sign in a user
+    // to Sign in a user
     public function sign_in($email, $username, $password)
     {
         $password = md5($password);
@@ -94,7 +94,6 @@ class Database
         } catch (PDOException $e) {
             exit('Error :' . $e->getMessage());
         }
-        
     }
 
 
@@ -118,7 +117,7 @@ class Database
             }
             unset($_SESSION['login']);
             session_destroy(); // destroy session
-            header("location:index.php"); 
+            header("location:index.php");
         } catch (PDOException $e) {
             exit('Error :' . $e->getMessage());
         }
@@ -166,12 +165,10 @@ class Database
         } catch (PDOException $e) {
             exit('Error :' . $e->getMessage());
         }
-
-        
     }
 
 
-// To Get A File's Name From The Database
+    // To Get A File's Name From The Database
     public function getAllFiles()
     {
         try {
@@ -184,11 +181,9 @@ class Database
         } catch (PDOException $e) {
             exit('Error :' . $e->getMessage());
         }
-
-        
     }
 
-// To send Access Request
+    // To send Access Request
     public function sendRequest($recieve_id, $sent_id, $file_id, $reason)
     {
 
@@ -200,14 +195,14 @@ class Database
             $query->bindParam(':sent_id', $sent_id, PDO::PARAM_STR);
             $query->bindParam(':reason', $reason, PDO::PARAM_STR);
             $query->execute();
-        } catch
-        (PDOException $e) {
+        } catch (PDOException $e) {
             exit('Error :' . $e->getMessage());
         }
     }
 
-// To get Request all request for a user from the data base
-    public function getRequest($user_id){
+    // To get Request all request for a user from the data base
+    public function getRequest($user_id)
+    {
         try {
             $sql = 'SELECT * FROM `request` WHERE receive_id = :receive_id OR sent_id = :sent_id';
             $query = $this->dbh->prepare($sql);
@@ -235,5 +230,29 @@ class Database
         }
     }
 
-}
 
+    public function logOut()
+    {
+        try {
+            $_SESSION = array();
+            if (ini_get("session.use_cookies")) {
+                $params = session_get_cookie_params();
+                setcookie(
+                    session_name(),
+                    '',
+                    time() - 60 * 60,
+                    $params["path"],
+                    $params["domain"],
+                    $params["secure"],
+                    $params["httponly"]
+                );
+            }
+            unset($_SESSION['id']);
+            session_destroy(); // destroy session
+            // return 'I am Working';
+            header("location:../index.php");
+        } catch (PDOException $e) {
+            exit('Error :' . $e->getMessage());
+        }
+    }
+}
