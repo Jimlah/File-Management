@@ -1,6 +1,6 @@
 <?php
 session_start();
-require('public/config/config.php');
+require('./public/config/config.php');
 
 $data = new Database;
 
@@ -60,7 +60,7 @@ if (isset($_POST['log_in'])) {
 
 <body>
 
-<!-- Navbar  -->
+    <!-- Navbar  -->
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <a class="navbar-brand" href="#">Fm</a>
@@ -95,8 +95,7 @@ if (isset($_POST['log_in'])) {
     <!-- Top Bar -->
 
     <div class="jumbotron text-center" style="margin-bottom:0">
-        <h1>My First Bootstrap 4 Page</h1>
-        <p>Resize this responsive page to see the effect!</p>
+        <h1>File upload And Management System</h1>
     </div>
 
     <div class="container" style="margin-top:30px">
@@ -106,7 +105,7 @@ if (isset($_POST['log_in'])) {
 
 
 
-<!-- Main Body -->
+                <!-- Main Body -->
                 <div class="card">
                     <div class="card-header">
                         Featured
@@ -307,7 +306,7 @@ if (isset($_POST['log_in'])) {
     <!-- Footer -->
 
     <div class="jumbotron text-center" style="margin-bottom:0">
-        <p>Footer</p>
+        <p>"when you don't create things, you become defined by your tastes rather than ability."</p>
     </div>
 
     <script>
