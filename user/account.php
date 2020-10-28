@@ -8,6 +8,14 @@ $data = new Database;
 if (strlen($_SESSION['id']) == 0) {
     header('location:../index.php');
 } else {
+
+    if (isset($_POST['edit'])) {
+
+        $id = $_SESSION['id'];
+        $column = $_POST['column'];
+        $input = $_POST['input'];
+        $data->editProfile($id, $column, $input);
+    }
 ?>
 
     <!DOCTYPE html>
@@ -128,20 +136,20 @@ if (strlen($_SESSION['id']) == 0) {
                                 </div>
 
                                 <!-- Default form request -->
-                                <form class=" modal-bodytext-center border border-light p-5" action="index.php" method="POST">
+                                <form class=" modal-bodytext-center border border-light p-5" action="account.php" method="POST">
 
                                     <p class="h4 mb-4">Edit</p>
 
                                     <div class="md-form">
-                                        <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="First name" name="input" value="">
+                                        <input type="text" id="defaultRegisterFormFirstName namevalue" class="form-control" name="input" value="">
                                     </div>
 
-                                    <input type="text" name="column" value="" hidden>
+                                    <input type="text" name="column" value="" id="column" hidden>
 
 
 
                                     <!-- Sign in button -->
-                                    <button class="btn btn-secondary btn-block my-4" type="submit" name='request'>Send</button>
+                                    <button class="btn btn-secondary btn-block my-4" type="submit" name='edit'>Send</button>
 
                                 </form>
                                 <!-- Default form register -->
@@ -153,16 +161,26 @@ if (strlen($_SESSION['id']) == 0) {
                     </div>
 
                     <script>
-                        // $('#name').on({
-                        //     'click': function() {
-                        //         $('input[name="column"]').val('name');
-                        //         $('input[name="input"]').val(<?= $data->getSingleUser($_SESSION['id'])->name ?>);
-                        //     }
-                        // });
+                        $(document).ready(function() {
+                            $('#name').click(function() {
+                                $('#namevalue').val('<?= $data->getSingleUser($_SESSION['id'])->name ?>');
+                                $('#column').val('name');
+                            });
 
-                        $('#name').click(function(){
-                            $('input[name="column"]').val('#name'); 
-                            $('input[name="input"]').val(<?= $data->getSingleUser($_SESSION['id'])->name ?>);
+                            $('#username').click(function() {
+                                $('#namevalue').val('<?= $data->getSingleUser($_SESSION['id'])->username ?>');
+                                $('#column').val('username');
+                            });
+
+                            $('#email').click(function() {
+                                $('#namevalue').val('<?= $data->getSingleUser($_SESSION['id'])->email ?>');
+                                $('#column').val('email');
+                            });
+
+                            $('#password').click(function() {
+                                $('#namevalue').val('<?= $data->getSingleUser($_SESSION['id'])->password ?>');
+                                $('#column').val('password');
+                            });
                         });
                     </script>
 
@@ -185,10 +203,6 @@ if (strlen($_SESSION['id']) == 0) {
         <?php
         require_once "includes/footer.php";
         ?>
-
-        <script>
-
-        </script>
 
     </body>
 
