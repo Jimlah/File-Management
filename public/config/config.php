@@ -272,6 +272,18 @@ class Database
         }
     }
 
+    public function delete($id, $table)
+    {
+        try {
+            $sql = 'DELETE FROM '. $table . ' WHERE id = :id';
+            $query = $this->dbh->prepare($sql);
+            $query->bindParam(':id', $id, PDO::PARAM_STR);
+            $query->execute();
+        } catch (PDOException $e) {
+            exit('Error :' . $e->getMessage());
+        }
+    }
+
 
     public function logOut()
     {
