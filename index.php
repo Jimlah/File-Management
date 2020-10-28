@@ -134,7 +134,7 @@ if (isset($_POST['log_in'])) {
                                         </a><?php
                                         } else {
                                             ?>
-                                        <a href="../document/<?php echo $value->name ?>" class="align-self-center ml-3" download>
+                                        <a href="document/<?php echo $value->name ?>" class="align-self-center ml-3" download>
                                             <img src="images/download.svg" />
                                         </a>
                                     <?php
