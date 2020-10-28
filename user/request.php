@@ -72,9 +72,9 @@ if (strlen($_SESSION['id']) == 0) {
                             ?>
                                 <tr>
                                     <td><?= $cnt ?></td>
-                                    <td><?= $value->file_id ?></td>
+                                    <td><?= $data->getSingleFile($value->file_id)->name?></td>
                                     <td><?= $value->reason ?></td>
-                                    <td><?= $value->sent_id ?></td>
+                                    <td><?= $data->getSingleUser($value->sent_id)->name?></td>
                                     <td><?= (!$value->reply) ? 'Pending' : $value->reply ?></td>
                                     <td><?= (!$value->reply) ? 'Pending' : 'sent' ?></td>
                                     <td><?= date("Y-m-d", strtotime($value->date)) ?></td>
