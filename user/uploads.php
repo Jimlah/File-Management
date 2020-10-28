@@ -71,10 +71,7 @@ if (strlen($_SESSION['id']) == 0) {
                                             src="<?php echo ($value->status == 'private') ? '../images/lock.svg' : '../images/unlock.svg' ?>" />
                                 </div>
 
-
-                                <a href="#" class="align-self-center ml-3">
-                                    <img src="../images/paper-airplane.svg" />
-                                </a>
+                                
                                 <a href="../document/<?php echo $value->name ?>" class="align-self-center ml-3"
                                     download>
                                     <img src="../images/download.svg" />
