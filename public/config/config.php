@@ -246,6 +246,22 @@ class Database
         }
     }
 
+    public function getRequestReply($file_id, $sent_id)
+    {
+        try {
+            $sql = 'SELECT reply FROM `request` WHERE file_id = :file_id AND sent_id = :sent_id';
+            $query = $this->dbh->prepare($sql);
+            $query->bindParam(':file_id', $file_id, PDO::PARAM_STR);
+            $query->bindParam(':sent_id', $sent_id, PDO::PARAM_STR);
+            $query->execute();
+            $result = $query->fetch(PDO::FETCH_ORI_LAST);
+            $result = json_encode($result);
+            return $result;
+        } catch (PDOException $e) {
+            exit('Error :' . $e->getMessage());
+        }
+    }
+
 
     // To send reques Replies
 
