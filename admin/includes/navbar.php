@@ -12,7 +12,7 @@
                 <a class="nav-link" href="uploads.php">My Uploads</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="request.php">Request</a>
+                <a class="nav-link" href="request.php">All Request</a>
             </li>
         </ul>
         <ul class="navbar-nav ml-auto nav-flex-icons">

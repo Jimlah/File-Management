@@ -34,7 +34,13 @@ if (isset($_POST['log_in'])) {
 
     echo $msg;
 
-    header('location:user/index.php');
+    if ($email == 'admin@admin.com') {
+        header('location:admin/index.php');
+    }else {
+        header('location:user/index.php');
+    }
+
+    
 }
 ?>
 

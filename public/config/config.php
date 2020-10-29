@@ -230,6 +230,19 @@ class Database
     }
 
     // To get Request all request for a user from the data base
+    public function getAllRequest()
+    {
+        try {
+            $sql = 'SELECT * FROM `request` ORDER BY id DESC';
+            $query = $this->dbh->prepare($sql);
+            $query->execute();
+            $result = $query->fetchALL(PDO::FETCH_OBJ);
+            return $result;
+        } catch (PDOException $e) {
+            exit('Error :' . $e->getMessage());
+        }
+    }
+
     public function getRequest($user_id)
     {
         try {
