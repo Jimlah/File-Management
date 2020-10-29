@@ -8,12 +8,12 @@ if (strlen($_SESSION['id']) == 0) {
     header('location:../index.php');
 } else {
 
-    if (isset($_POST['request'])) {
+    if (isset($_GET['sent_id'])) {
 
-        $reason = $_POST['reason'];
-        $sent_id = $_POST['sent_id'];
-        $file_id = $_POST['file_id'];
-        $recieve_id = $_POST['receive_id'];
+        $reason = "Request Access";
+        $sent_id = $_GET['sent_id'];
+        $file_id = $_GET['file_id'];
+        $recieve_id = $_GET['receive_id'];
 
         $msg = $data->sendRequest($recieve_id, $sent_id, $file_id, $reason);
 
@@ -56,7 +56,7 @@ if (strlen($_SESSION['id']) == 0) {
 
                                 <?php
                                 $dt = $data->getAllFiles();
-                                $dt = json_decode($dt);
+                                // $dt = json_decode($dt);
                                 foreach ($dt as $value) {
                                 ?>
 
@@ -70,80 +70,20 @@ if (strlen($_SESSION['id']) == 0) {
                                         </div>
 
                                         <?php
-
-
                                         $accept =  json_encode($data->getRequestReply($value->id, $_SESSION['id']));
                                         $acc = (json_decode($accept));
-
-
-                                        if ($value->status == 'private' & $_SESSION['id'] != $value->user_id & $acc != '["accept"]') { ?>
-
-                                            <a href="#" class="align-self-center ml-3" data-toggle="modal" data-target="#request">
-                                                <img src="../images/paper-airplane.svg" />
-
-                                            </a>
-
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="request" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="staticBackdropLabel">Send Request</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                        </div>
-
-                                                        <!-- Default form request -->
-                                                        <form class=" modal-bodytext-center border border-light p-5" action="index.php" method="POST">
-
-                                                            <p class="h4 mb-4">Request</p>
-
-                                                            <div class="md-form">
-                                                                <textarea id="form7" class="md-textarea form-control" name='reason' rows="3"></textarea>
-                                                                <label for="form7">State Your Reason</label>
-                                                            </div>
-
-                                                            <input type="text" name="sent_id" value="<?= $_SESSION['id'] ?>" hidden>
-                                                            <input type="text" name="receive_id" value="<?= $value->user_id  ?>" hidden>
-                                                            <input type="text" name="file_id" value="<?= $value->id ?>" hidden>
-
-
-
-                                                            <!-- Sign in button -->
-                                                            <button class="btn btn-secondary btn-block my-4" type="submit" name='request'>Send</button>
-
-                                                        </form>
-                                                        <!-- Default form register -->
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        <?php
-
-                                        } else {
-                                        ?>
-                                            <a href="../document/<?php echo $value->name ?>" class="align-self-center ml-3" download>
-                                                <img src="../images/download.svg" />
-                                            </a>
-                                        <?php
-                                        }
                                         ?>
 
-
-
-                                    <?php
-                                } ?>
-
+                                        <?= ($value->status == 'private' & $_SESSION['id'] != $value->user_id & $acc != '["accept"]') ? '<td><a href="index.php?sent_id=' . $_SESSION['id'] . '&receive_id=' . $value->user_id . '&file_id=' . $value->id . '" class="align-self-center ml-3"><img src="../images/paper-airplane.svg" /></a></td>' : '<td><a href="../document/<?php echo $value->name ?>"
+                                class="align-self-center ml-3" download>
+                                <img src="../images/download.svg" />
+                                </a></td>' ?>
 
 
                                     </li>
 
 
-
+                                <?php } ?>
 
                             </ul>
                         </div>

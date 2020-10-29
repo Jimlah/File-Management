@@ -205,8 +205,8 @@ class Database
             $query = $this->dbh->prepare($sql);
             $query->execute();
             $result = $query->fetchALL(PDO::FETCH_OBJ);
-            $dt = json_encode($result);
-            return $dt;
+            // $dt = json_encode($result);
+            return $result;
         } catch (PDOException $e) {
             exit('Error :' . $e->getMessage());
         }
