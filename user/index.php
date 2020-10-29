@@ -74,8 +74,8 @@ if (strlen($_SESSION['id']) == 0) {
                                         $acc = (json_decode($accept));
                                         ?>
 
-                                        <?= ($value->status == 'private' & $_SESSION['id'] != $value->user_id & $acc != '["accept"]') ? '<td><a href="index.php?sent_id=' . $_SESSION['id'] . '&receive_id=' . $value->user_id . '&file_id=' . $value->id . '" class="align-self-center ml-3"><img src="../images/paper-airplane.svg" /></a></td>' : '<td><a href="../document/<?php echo $value->name ?>"
-                                class="align-self-center ml-3" download>
+                                        <?= ($value->status == 'private' & $_SESSION['id'] != $value->user_id & $acc != '["accept"]') ? '<td><a href="index.php?sent_id=' . $_SESSION['id'] . '&receive_id=' . $value->user_id . '&file_id=' . $value->id . '" class="align-self-center ml-3" data-toggle="tooltip" data-placement="top" title="Click to Send Request"><img src="../images/paper-airplane.svg" /></a></td>' : '<td><a href="../document/<?php echo $value->name ?>"
+                                class="align-self-center ml-3" download data-toggle="tooltip" data-placement="top" title="Click To Download">
                                 <img src="../images/download.svg" />
                                 </a></td>' ?>
 
