@@ -66,7 +66,7 @@ if (strlen($_SESSION['id']) == 0) {
 
                                 <?php
                                 $dt = $data->getAllFiles();
-                                $dt = json_decode($dt);
+                                // $dt = json_decode($dt);
                                 foreach ($dt as $value) {
                                     if ($_SESSION['id'] == $value->user_id) {
                                 ?>
@@ -79,11 +79,11 @@ if (strlen($_SESSION['id']) == 0) {
                                             </div>
 
 
-                                            <a href="../document/<?php echo $value->name ?>" class="align-self-center ml-3" download>
+                                            <a href="../document/<?php echo $value->name ?>" class="align-self-center ml-3" download data-toggle="tooltip" data-placement="top" title="Click To Download">
                                                 <img src="../images/download.svg" />
                                             </a>
 
-                                            <a href="#" class="align-self-center ml-3" data-toggle="modal" data-target="#delete">
+                                            <a href="#" class="align-self-center ml-3" data-toggle="modal" data-target="#delete" data-toggle="tooltip" data-placement="top" title="Click to Delete">
 
                                                 <img src="../images/trash.svg" />
 
@@ -105,7 +105,7 @@ if (strlen($_SESSION['id']) == 0) {
                                                     <div class="modal-bodytext-center border border-light p-5">
                                                         <form class="text-center" action="uploads.php" method="POST">
 
-                                                            <h1>Do yo want to revoke Delete <?= $data->getSingleUser($value->user_id)->name?></h1>
+                                                            <h1>Do yo want to revoke Delete <?= $data->getSingleUser($value->user_id)->name ?></h1>
 
                                                             <input type="text" name="id" value="<?= $value->id ?>" hidden>
                                                             <input type="text" name="table" value="file" hidden>
@@ -170,7 +170,7 @@ if (strlen($_SESSION['id']) == 0) {
                         <div class="input-group">
                             <div class="input-group-prepend">
 
-                                <button type="submit" name="submit" class="input-group-text" id="inputGroupFileAddon01">Upload</button>
+                                <button type="submit" name="submit" class="input-group-text" id="inputGroupFileAddon01" data-toggle="tooltip" data-placement="top" title="Click To Upload">Upload</button>
 
                             </div>
                             <div class="custom-file">
