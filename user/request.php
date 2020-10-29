@@ -88,7 +88,7 @@ if (strlen($_SESSION['id']) == 0) {
                                     <td><?= (!$value->reply) ? 'Pending' : $value->reply ?></td>
                                     <td><?= (!$value->reply) ? 'Pending' : 'sent' ?></td>
                                     <td><?= date("Y-m-d", strtotime($value->date)) ?></td>
-                                    <?= $value->receive_id == $_SESSION['id']? '<td><a href="request.php?reply=accept&id='. $value->id.'" class="align-self-center ml-3"><img src="../images/reply.svg" alt="reply" /></a></td>': '<td><a href="request.php?del=request&id=' . $value->id . '" class="align-self-center ml-3" ><img src="../images/x.svg" alt="reply" /></a></td>'?>
+                                    <?= $value->receive_id == $_SESSION['id']? '<td><a href="request.php?reply=accept&id='. $value->id. '" class="align-self-center ml-3" data-toggle="tooltip" data-placement="top" title="Click to Give Access"><img src="../images/reply.svg" alt="reply" /></a><a href="request.php?del=request&id=' . $value->id . '" class="align-self-center ml-3" data-toggle="tooltip" data-placement="top" title="Click to remove access"><img src="../images/x.svg" alt="reply" /></a></td>': '<td><a href="request.php?del=request&id=' . $value->id . '" class="align-self-center ml-3" data-toggle="tooltip" data-placement="top" title="Click to Cancel Request"><img src="../images/x.svg" alt="reply" /></a></td>'?>
                                     
 
                                 </tr>
