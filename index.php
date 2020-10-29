@@ -115,7 +115,7 @@ if (isset($_POST['log_in'])) {
 
                             <?php
                             $dt = $data->getAllFiles();
-                            $dt = json_decode($dt);
+                            // $dt = json_decode($dt);
                             foreach ($dt as $value) {
                             ?>
 
