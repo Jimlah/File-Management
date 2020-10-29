@@ -68,7 +68,7 @@ if (strlen($_SESSION['id']) == 0) {
                                 $dt = $data->getAllFiles();
                                 // $dt = json_decode($dt);
                                 foreach ($dt as $value) {
-                                    if ($_SESSION['id'] == $value->user_id) {
+                                    
                                 ?>
 
                                         <li class="media shadow p-3 mb-5 bg-white rounded" class='el' style>
@@ -128,7 +128,7 @@ if (strlen($_SESSION['id']) == 0) {
                                             </div>
                                         </div>
                                 <?php
-                                    }
+                                   
                                 } ?>
 
 

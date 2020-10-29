@@ -9,7 +9,7 @@
                 <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="uploads.php">My Uploads</a>
+                <a class="nav-link" href="uploads.php">All Uploads</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="request.php">All Request</a>
