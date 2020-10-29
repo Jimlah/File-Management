@@ -229,6 +229,21 @@ class Database
         }
     }
 
+
+    // To get Request all request for a user from the data base
+    public function getAllUsers()
+    {
+        try {
+            $sql = 'SELECT * FROM `user` ORDER BY id DESC';
+            $query = $this->dbh->prepare($sql);
+            $query->execute();
+            $result = $query->fetchALL(PDO::FETCH_OBJ);
+            return $result;
+        } catch (PDOException $e) {
+            exit('Error :' . $e->getMessage());
+        }
+    }
+
     // To get Request all request for a user from the data base
     public function getAllRequest()
     {
@@ -321,6 +336,39 @@ class Database
             exit('Error :' . $e->getMessage());
         }
     }
+
+
+    // To delete any Input fro Request table
+    public function deleteRequest($sent_id)
+    {
+        try {
+            $sql = 'DELETE FROM request WHERE sent_id = :sent_id OR receive_id = :receive_id';
+            $query = $this->dbh->prepare($sql);
+            $query->bindParam(':sent_id', $sent_id, PDO::PARAM_STR);
+            $query->bindParam(':receive_id', $sent_id, PDO::PARAM_STR);
+            $query->execute();
+        } catch (PDOException $e) {
+            exit('Error :' . $e->getMessage());
+        }
+    }
+
+
+    // To delete any Input fro Request table
+    public function deleteFile($user_id)
+    {
+        try {
+            $sql = 'DELETE FROM file WHERE user_id = :user_id';
+            $query = $this->dbh->prepare($sql);
+            $query->bindParam(':user_id', $user_id, PDO::PARAM_STR);
+            $query->execute();
+        } catch (PDOException $e) {
+            exit('Error :' . $e->getMessage());
+        }
+    }
+
+
+
+
 
 // To Logout From The account
     public function logOut()

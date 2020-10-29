@@ -12,6 +12,9 @@
                 <a class="nav-link" href="uploads.php">All Uploads</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="user.php">All Users</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="request.php">All Request</a>
             </li>
         </ul>
