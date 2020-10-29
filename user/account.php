@@ -109,7 +109,7 @@ if (strlen($_SESSION['id']) == 0) {
                                         <h4>
                                             <p style="text-align: center;"><strong id="user-globe-rank"> <?php
                                                                                                             $dt = $data->getAllFiles();
-                                                                                                            $dt = json_decode($dt);
+                                                                                                            // $dt = json_decode($dt);
                                                                                                             $cnt = 0;
                                                                                                             foreach ($dt as $value) {
                                                                                                                 
@@ -127,7 +127,7 @@ if (strlen($_SESSION['id']) == 0) {
                                     </div>
                                     <div class=" col-lg-6" style="text-align:center;overflow-wrap: break-word;">
                                         <h4>
-                                            <p style="text-align: center;"><strong id="user-college-rank"><?= count(json_decode($data->getRequest($_SESSION['id']))) ?>
+                                            <p style="text-align: center;"><strong id="user-college-rank"><?= count($data->getRequest($_SESSION['id'])) ?>
                                                 </strong></p>
                                         </h4>
                                         <p> <small class="label label-warning">Number of Requests</small></p>
