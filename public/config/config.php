@@ -1,9 +1,20 @@
 <?php
 //database.php  
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'file_db');
+
+if ($_SERVER['SERVER_NAME'] == 'localhost') {
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_NAME', 'file_db');
+} else {
+    define('DB_HOST', 'localhost');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('DB_NAME', 'file_db');
+}
+
+
+
 class Database
 {
 
