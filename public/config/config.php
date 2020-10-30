@@ -8,9 +8,9 @@ if ($_SERVER['SERVER_NAME'] == 'localhost') {
     define('DB_NAME', 'file_db');
 } else {
     define('DB_HOST', 'localhost');
-    define('DB_USER', 'root');
-    define('DB_PASS', '');
-    define('DB_NAME', 'file_db');
+    define('DB_USER', 'alhibruc_fuam');
+    define('DB_PASS', 'jat@1997');
+    define('DB_NAME', 'alhibruc_fuam');
 }
 
 
