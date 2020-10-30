@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 28, 2020 at 12:55 AM
+-- Generation Time: Oct 30, 2020 at 03:34 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -40,9 +40,10 @@ CREATE TABLE `file` (
 --
 
 INSERT INTO `file` (`id`, `user_id`, `name`, `status`, `date`) VALUES
-(2, 1, 'Abdullahi-Resume.docx', 'private', '2020-10-27 20:08:02'),
-(3, 1, 'Abdullahi-Resume.docx', 'public', '2020-10-27 23:41:26'),
-(4, 1, 'Abdullahi-Resume.docx', 'public', '2020-10-27 23:41:39');
+(8, 8, 'Fianl Resume.docx', 'private', '2020-10-28 12:50:51'),
+(9, 8, 'certificate.pdf', 'private', '2020-10-28 21:24:11'),
+(10, 8, 'Profile.pdf', 'private', '2020-10-28 21:25:05'),
+(12, 8, 'Fianl Resume.docx', 'public', '2020-10-29 09:47:20');
 
 -- --------------------------------------------------------
 
@@ -52,10 +53,10 @@ INSERT INTO `file` (`id`, `user_id`, `name`, `status`, `date`) VALUES
 
 CREATE TABLE `request` (
   `id` int(11) NOT NULL,
-  `recieve_id` int(11) DEFAULT NULL,
+  `receive_id` int(11) DEFAULT NULL,
   `file_id` int(11) DEFAULT NULL,
   `sent_id` int(11) DEFAULT NULL,
-  `reason` varchar(50) DEFAULT NULL,
+  `reason` varchar(225) DEFAULT NULL,
   `reply` varchar(50) DEFAULT NULL,
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -80,8 +81,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `username`, `email`, `password`, `date`) VALUES
-(1, 'Abdullahi', 'jat', 'abdullahij951@gmail.com', '123456', '2020-10-26 19:46:25'),
-(8, 'Nimot Raji', 'nimot', 'nimotraji@gmail.com', '25d55ad283aa400af464c76d713c07ad', '2020-10-27 12:15:34');
+(8, 'Nimotallahi Raji', 'Nimotallahi', 'nimotraji@gmail.com', '25d55ad283aa400af464c76d713c07ad', '2020-10-27 12:15:34'),
+(10, 'Admin Admin', 'admin', 'admin@admin.com', '21232f297a57a5a743894a0e4a801fc3', '2020-10-29 09:48:52');
 
 --
 -- Indexes for dumped tables
@@ -91,6 +92,12 @@ INSERT INTO `user` (`id`, `name`, `username`, `email`, `password`, `date`) VALUE
 -- Indexes for table `file`
 --
 ALTER TABLE `file`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `request`
+--
+ALTER TABLE `request`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -107,13 +114,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `file`
 --
 ALTER TABLE `file`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `request`
+--
+ALTER TABLE `request`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
