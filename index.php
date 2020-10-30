@@ -32,7 +32,7 @@ if (isset($_POST['log_in'])) {
 
     $msg = $data->sign_in($email, $username, $password);
 
-    echo $msg;
+    
 
     if ($email == 'admin@admin.com') {
         header('location:admin/index.php');

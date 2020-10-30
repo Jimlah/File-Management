@@ -13,7 +13,7 @@ if (strlen($_SESSION['id']) == 0) {
     if (isset($_POST['submit'])) {
         $status = $_POST['status'];
         $user_id = $_SESSION['id'];
-        echo $data->upload($status, $user_id);
+        $data->upload($status, $user_id);
         header('location:uploads.php');
     }
 
