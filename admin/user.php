@@ -20,7 +20,7 @@ if (strlen($_SESSION['id']) == 0) {
         $data->deleteFile($id);
 
 
-        header('location:user.php');
+        // header('location:user.php');
     }
 
 ?>
@@ -82,8 +82,35 @@ if (strlen($_SESSION['id']) == 0) {
                                     <td><?= $value->email ?></td>
                                     <td><?= date("Y-m-d", strtotime($value->date)) ?></td>
 
-                                    <?= ($value->email == 'admin@admin.com') ? '' : '<td><a href="user.php?del=user&id='  . $value->id . ' " class="align-self-center ml-3" data-toggle="tooltip" data-placement="top" title="Click to remove access"><img src="../images/trash.svg" alt="reply" /></a></td>' ?>
+                                    <?= ($value->email == 'admin@admin.com') ? '' : '<td><a href="#" class="align-self-center ml-3" data-toggle="modal" data-target="#del' . $value->id . '"><img src="../images/trash.svg" alt="reply" /></a></td>' ?>
 
+                                    <!-- Button trigger modal -->
+
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="del<?= $value->id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container">
+                                                        <form action="user.php" method="get">
+                                                        <button type="submit" class="btn btn-danger btn-lg btn-block">Yes</button>
+                                                            <button type="button" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">No</button>
+
+                                                            <input type="text" name="id" value="<?= $value->id ?>" hidden>
+                                                            <input type="text" name="del" value="user" hidden>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </tr>
 
                             <?php
