@@ -15,9 +15,9 @@ if (strlen($_SESSION['id']) == 0) {
         $id = $_GET['id'];
         $table = $_GET['del'];
 
-        $data->delete($id, $table);
-        $data->deleteRequest($id);
-        $data->deleteFile($id);
+        $msg =  $data->delete($id, $table);
+        // $data->deleteRequest($id);
+        // $data->deleteFile($id);
 
 
         // header('location:user.php');
@@ -53,7 +53,20 @@ if (strlen($_SESSION['id']) == 0) {
                 <div class="col-sm-12 ">
 
 
+                    <?php
+                    if (isset($msg)) {
+                    ?>
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            <?= $msg ?>.
+                            <a href="user.php"  class="close" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                    </a>
+                        </div>
 
+
+                    <?php
+                    }
+                    ?>
 
 
                     <table class="table table-striped">
@@ -100,7 +113,7 @@ if (strlen($_SESSION['id']) == 0) {
                                                 <div class="modal-body">
                                                     <div class="container">
                                                         <form action="user.php" method="get">
-                                                        <button type="submit" class="btn btn-danger btn-lg btn-block">Yes</button>
+                                                            <button type="submit" class="btn btn-danger btn-lg btn-block">Yes</button>
                                                             <button type="button" class="btn btn-secondary btn-lg btn-block" data-dismiss="modal">No</button>
 
                                                             <input type="text" name="id" value="<?= $value->id ?>" hidden>
