@@ -343,6 +343,8 @@ class Database
             $query = $this->dbh->prepare($sql);
             $query->bindParam(':id', $id, PDO::PARAM_STR);
             $query->execute();
+
+            return ucfirst($table) . ' Succefully deleted';
         } catch (PDOException $e) {
             exit('Error :' . $e->getMessage());
         }
